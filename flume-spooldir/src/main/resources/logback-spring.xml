@@ -52,7 +52,6 @@
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<fileNamePattern>${LOG_HOME}/flume/%d{yyyy-MM-dd,aux}/%d{HH-mm}.%i.log
 			</fileNamePattern>
-			<maxHistory>7</maxHistory><!-- 7天的文件 -->
 			<totalSizeCap>10GB</totalSizeCap><!-- 上限大小，最大不超过10G -->
 			<timeBasedFileNamingAndTriggeringPolicy
 				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
