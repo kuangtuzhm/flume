@@ -46,23 +46,23 @@
 			<pattern>%d [%thread] %-5level %logger{80} - %msg%n</pattern>
 		</encoder>
 	</appender>
-	<appender name="flume" class="com.gilt.logback.flume.FlumeLogstashV1Appender">
-        <!-- 此项是连接flume节点的ip和端口 -->
-        <flumeAgents>${flumeAgents}</flumeAgents>
-        <flumeProperties>connect-timeout=4000;request-timeout=8000</flumeProperties>
-        <batchSize>100</batchSize>
-        <reportingWindow>1000</reportingWindow>
-        <!-- 此项配置avro头部信息，dir标识目录 -->
-        <additionalAvroHeaders>dir=logs</additionalAvroHeaders>
-        <!-- 此项配置当前应用 -->
-        <application>flumeLogAppender</application>
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>warn</level>
-            <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
-        </filter>
-
-    </appender>
+	<appender name="flumeAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/flumesdstest.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/flume/%d{yyyy-MM-dd,aux}/%d{HH-mm}.%i.log
+			</fileNamePattern>
+			<maxHistory>7</maxHistory><!-- 7天的文件 -->
+			<totalSizeCap>10GB</totalSizeCap><!-- 上限大小，最大不超过10G -->
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %msg%n</pattern>
+		</encoder>
+	</appender>
     <!-- show parameters for hibernate sql 专为 Hibernate 定制 -->
     <!--  
     <logger name="org.hibernate.type.descriptor.sql.BasicBinder"  level="TRACE" />
@@ -76,13 +76,16 @@
     <logger name="java.sql.Connection" level="DEBUG"/>
     <logger name="java.sql.Statement" level="DEBUG"/>
     <logger name="java.sql.PreparedStatement" level="DEBUG"/>
-
+	
+	<logger name="flumelog" additivity="false" level="info">
+		<appender-ref ref="flumeAppender"/>
+	</logger>
+	
     <!-- 日志输出级别 -->
     <root level="${logLevel}">
         <appender-ref ref="stdout" />
 		<appender-ref ref="dailyRolling" />
 		<appender-ref ref="errorDailyRolling" />
-		<appender-ref ref="flume" />
     </root>
     <!--日志异步到数据库 -->
     <!--<appender name="DB" class="ch.qos.logback.classic.db.DBAppender">-->

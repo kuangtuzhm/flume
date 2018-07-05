@@ -14,7 +14,7 @@
  * http://www.jimilab.com/
 */
 
-package com.zealot.flume.logAppend.controller;
+package com.zealot.flume.sds.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -39,12 +39,15 @@ public class FlumeController {
     //输出普通日志
     private final static Logger logger = LoggerFactory.getLogger(FlumeController.class);    
     
+    //输出统一采集的业务日志或者监控日志
+    private final static Logger flumeLog = LoggerFactory.getLogger("flumelog");
     
     @RequestMapping(value = "/stu")
     @ResponseBody
     public String stu(HttpServletRequest req){
         
         logger.warn("普通业务日志:{'oper':'add','imei':'123456789123456'}");
+        flumeLog.info("{'oper':'add','imei':'123456789123456'}");
         return "done";
       
     }
