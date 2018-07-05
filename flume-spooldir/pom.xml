@@ -54,13 +54,13 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<!-- 指定该Main Class为全局的唯一入口 -->
-					<mainClass>com.jimi.StartUp</mainClass>
+					<mainClass>com.zealot.StartUp</mainClass>
 					<layout>ZIP</layout>
 					<executable>true</executable>
 					<includes>
 						<include>
-							<groupId>com.jimi</groupId>
-							<artifactId>rtv-os</artifactId>
+							<groupId>com.zealot</groupId>
+    						<artifactId>flume</artifactId>
 						</include>
 					</includes>
 					<outputDirectory>target/${project.name}/</outputDirectory>
