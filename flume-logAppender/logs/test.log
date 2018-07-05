@@ -1,0 +1,7 @@
+2018-07-05 08:47:12,793 [http-nio-9657-exec-4] WARN  com.zealot.flume.logAppend.controller.FlumeController - {'oper':'add','imei':'123456789123456'}
+2018-07-05 08:47:14,682 [http-nio-9657-exec-5] WARN  com.zealot.flume.logAppend.controller.FlumeController - {'oper':'add','imei':'123456789123456'}
+2018-07-05 08:47:15,115 [http-nio-9657-exec-7] WARN  com.zealot.flume.logAppend.controller.FlumeController - {'oper':'add','imei':'123456789123456'}
+2018-07-05 08:47:15,410 [http-nio-9657-exec-9] WARN  com.zealot.flume.logAppend.controller.FlumeController - {'oper':'add','imei':'123456789123456'}
+2018-07-05 08:47:15,621 [http-nio-9657-exec-1] WARN  com.zealot.flume.logAppend.controller.FlumeController - {'oper':'add','imei':'123456789123456'}
+2018-07-05 08:47:15,850 [http-nio-9657-exec-3] WARN  com.zealot.flume.logAppend.controller.FlumeController - {'oper':'add','imei':'123456789123456'}
+2018-07-05 08:47:16,020 [http-nio-9657-exec-5] WARN  com.zealot.flume.logAppend.controller.FlumeController - {'oper':'add','imei':'123456789123456'}
