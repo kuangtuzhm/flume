@@ -24,6 +24,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
+import com.zealot.log.bean.OperLogBean;
+
 /**
  * @FileName FlumeController.java
  * @Description: 
@@ -46,8 +49,17 @@ public class FlumeController {
     @ResponseBody
     public String stu(HttpServletRequest req){
         
-        logger.warn("普通业务日志:{'oper':'add','imei':'123456789123456'}");
-        flumeLog.info("{'oper':'add','imei':'123456789123456'}");
+        OperLogBean log = new OperLogBean();
+        log.setProjectId("TUQIANG");
+        log.setOperatorDesc("增加用户[张三]成功");
+        log.setOperAction(2);
+        log.setUserId(1);
+        log.setOperObj("1234");
+        
+        String json = JSON.toJSONString(log);
+        
+        logger.warn(json);
+        flumeLog.info(json);
         return "done";
       
     }
