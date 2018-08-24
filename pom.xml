@@ -23,5 +23,6 @@
 	</build>
   <modules>
     <module>flume-spooldir</module>
+    <module>flume-logBase</module>
   </modules>
 </project>
