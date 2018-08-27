@@ -24,10 +24,16 @@
 	    <version>0.0.8-SNAPSHOT</version>
 	</dependency>
 	<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>1.2.1</version>
-		</dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>fastjson</artifactId>
+		<version>1.2.1</version>
+	</dependency>
+	<dependency>
+		<groupId>com.zealot</groupId>
+		<artifactId>flume-logBase</artifactId>
+		<version>1.0</version>
+	</dependency>
+	
   </dependencies>
   <!-- Package as an executable jar -->
 	<build>

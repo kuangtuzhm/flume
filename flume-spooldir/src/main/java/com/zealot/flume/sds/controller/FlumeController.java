@@ -25,6 +25,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
+import com.zealot.flume.log.bean.LogInfo;
+import com.zealot.flume.log.enums.Module;
+import com.zealot.flume.log.enums.OperAction;
+import com.zealot.flume.log.util.LogUtil;
 import com.zealot.log.bean.OperLogBean;
 
 /**
@@ -40,10 +44,7 @@ import com.zealot.log.bean.OperLogBean;
 public class FlumeController {
 
     //输出普通日志
-    private final static Logger logger = LoggerFactory.getLogger(FlumeController.class);    
-    
-    //输出统一采集的业务日志或者监控日志
-    private final static Logger flumeLog = LoggerFactory.getLogger("flumelog");
+    private final static Logger logger = LoggerFactory.getLogger(FlumeController.class);
     
     @RequestMapping(value = "/stu")
     @ResponseBody
@@ -58,8 +59,20 @@ public class FlumeController {
         
         String json = JSON.toJSONString(log);
         
-        logger.warn(json);
-        flumeLog.info(json);
+        LogInfo logInfo = LogUtil.getLogInfo(Module.USER, "增加用户{},{}成功");
+        logInfo.setOperAction(OperAction.ADD.getAction());
+        logInfo.setOperObj("123456789");
+        logInfo.setResultCode(1);
+        LogUtil.debug(logInfo, "张三","李四");
+        
+        LogUtil.debug(Module.USER, "增加用户[{}]成功", "张三");
+        
+        LogUtil.debug(Module.USER, OperAction.ADD, "增加用户[{}]成功", "张三");
+        
+        Throwable e=new Exception("1324");
+        
+        LogUtil.debug(Module.USER, "增加用户出错:", e);
+        
         return "done";
       
     }
