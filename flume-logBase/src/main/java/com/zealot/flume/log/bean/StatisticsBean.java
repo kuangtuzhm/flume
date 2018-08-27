@@ -14,7 +14,7 @@
  * http://www.jimilab.com/
 */
 
-package com.zealot.log.bean;
+package com.zealot.flume.log.bean;
 
 import java.io.Serializable;
 import java.util.Date;

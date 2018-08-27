@@ -49,7 +49,8 @@ import com.zealot.flume.statistics.util.IPUtil;
 @RequestMapping("/iga")  
 public class IGacontroller {
 	
-	private static final Logger logger = LoggerFactory.getLogger(IGacontroller.class);
+    //输出统一采集的业务日志或者监控日志
+    private final static Logger flumeLog = LoggerFactory.getLogger("flumelog");
 	
 	
 	/**
@@ -76,21 +77,15 @@ public class IGacontroller {
 		if(auth)
 		{
 			//日志收集   
-			try {
-				//客户端信息
-	            String ip = IPUtil.getIpAddr(request);
-	            //String userAgent = request.getHeader("User-Agent");
-	            args.setRemoteIp(ip);
-	            //args.setUserAgent(userAgent);
-				args.setCreateTime(new Date());
+		    //客户端信息
+	        String ip = IPUtil.getIpAddr(request);
+	        //String userAgent = request.getHeader("User-Agent");
+	        args.setRemoteIp(ip);
+	        //args.setUserAgent(userAgent);
+			args.setCreateTime(new Date());
 
-			} catch (Exception e) {
-				logger.error("IGacontroller.analysis数据保存错误:",e);
-			}
-			
-			
 			String s = JSON.toJSONString(args);
-			logger.debug("s="+s);
+
 		}
 		response.setHeader("Pragma", "No-cache");  
 		response.setHeader("Cache-Control", "no-cache");           
