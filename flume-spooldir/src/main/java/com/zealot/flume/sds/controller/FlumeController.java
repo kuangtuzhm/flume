@@ -29,7 +29,6 @@ import com.zealot.flume.log.bean.LogInfo;
 import com.zealot.flume.log.enums.Module;
 import com.zealot.flume.log.enums.OperAction;
 import com.zealot.flume.log.util.LogUtil;
-import com.zealot.log.bean.OperLogBean;
 
 /**
  * @FileName FlumeController.java
@@ -49,15 +48,6 @@ public class FlumeController {
     @RequestMapping(value = "/stu")
     @ResponseBody
     public String stu(HttpServletRequest req){
-        
-        OperLogBean log = new OperLogBean();
-        log.setProjectId("TUQIANG");
-        log.setOperatorDesc("增加用户[张三]成功");
-        log.setOperAction(2);
-        log.setUserId(1);
-        log.setOperObj("1234");
-        
-        String json = JSON.toJSONString(log);
         
         LogInfo logInfo = LogUtil.getLogInfo(Module.USER, "增加用户{},{}成功");
         logInfo.setOperAction(OperAction.ADD.getAction());

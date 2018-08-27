@@ -33,6 +33,11 @@ public class StatisticsBean implements Serializable{
      * 
      */
     private static final long serialVersionUID = 6947824633652617914L;
+    
+    /**
+     * 校验的账号
+     */
+    private String account;
 
     /**
      * 项目标识
@@ -85,6 +90,11 @@ public class StatisticsBean implements Serializable{
     private String userAgent;
     
     private Date createTime;
+    
+    /**
+     * 统计来源项目的domain
+     */
+    private String domain;
 
     public String getProjectId() {
         return projectId;
@@ -172,5 +182,21 @@ public class StatisticsBean implements Serializable{
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    public String getDomain() {
+        return domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
     }
 }
