@@ -73,6 +73,31 @@ public class FlumeController {
         
         LogUtil.debug(Module.USER, "增加用户出错:", e);
         
+        
+        LogUtil.info(logInfo, "张三","李四");
+        
+        LogUtil.info(Module.USER, "增加用户[{}]成功", "张三");
+        
+        LogUtil.info(Module.USER, OperAction.ADD, "增加用户[{}]成功", "张三");
+
+        LogUtil.info(Module.USER, "增加用户出错:", e);
+        
+        LogUtil.warn(logInfo, "张三","李四");
+        
+        LogUtil.warn(Module.USER, "增加用户[{}]成功", "张三");
+        
+        LogUtil.warn(Module.USER, OperAction.ADD, "增加用户[{}]成功", "张三");
+
+        LogUtil.warn(Module.USER, "增加用户出错:", e);
+        
+        LogUtil.error(logInfo, "张三","李四");
+        
+        LogUtil.error(Module.USER, "增加用户[{}]成功", "张三");
+        
+        LogUtil.error(Module.USER, OperAction.ADD, "增加用户[{}]成功", "张三");
+
+        LogUtil.error(Module.USER, "增加用户出错:", e);
+        
         return "done";
       
     }
