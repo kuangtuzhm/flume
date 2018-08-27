@@ -24,5 +24,6 @@
   <modules>
     <module>flume-spooldir</module>
     <module>flume-logBase</module>
+    <module>flume-statstic-web</module>
   </modules>
 </project>
